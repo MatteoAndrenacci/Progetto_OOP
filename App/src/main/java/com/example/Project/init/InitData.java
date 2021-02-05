@@ -135,7 +135,7 @@ public class InitData {
 
 				Event newEvent = new Event(name, segment, Converter.dateConv(date), venue, city, state, country);
 				eventsList.add(newEvent);
-
+                
 			}
 
 		}
