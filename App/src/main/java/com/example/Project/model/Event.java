@@ -1,18 +1,19 @@
 package com.example.Project.model;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Event {
 
 	String name;
 	String segment;
-	String date;
+	LocalDateTime date;
 	String venue;
 	String city;
 	String state;
 	String country;
 	
-	public Event(String name, String segment, String date, String venue, String city, String state, String country) {
+	public Event(String name, String segment, LocalDateTime date, String venue, String city, String state, String country) {
 		super();
 		this.name = name;
 		this.segment = segment;
@@ -34,10 +35,10 @@ public class Event {
 	public void setSegment(String segment) {
 		this.segment = segment;
 	}
-	public String getDate() {
+	public LocalDateTime getDate() {
 		return date;
 	}
-	public void setDate(String date) {
+	public void setDate(LocalDateTime date) {
 		this.date = date;
 	}
 	public String getVenue() {
