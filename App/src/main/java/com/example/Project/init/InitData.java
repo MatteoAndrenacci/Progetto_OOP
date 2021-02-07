@@ -86,8 +86,8 @@ public class InitData {
 	 *
 	 */
 	
-	public static ArrayList<Event> getDatafromJson(ArrayList<JSONObject> allEvents) {
-
+	public static ArrayList<Event> getDatafromJson() {
+		ArrayList<JSONObject> allEvents = getJSON();
 		String name;
 		String segment;
 		String date;

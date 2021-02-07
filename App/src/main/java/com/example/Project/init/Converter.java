@@ -1,6 +1,6 @@
 package com.example.Project.init;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
@@ -13,9 +13,9 @@ import java.util.Locale;
 
 public class Converter {
 
-	public static LocalDateTime dateConv(String date) {
+	public static LocalDate dateConv(String date) {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.CANADA);
-		LocalDateTime newDate = LocalDateTime.parse(date, formatter);
+		LocalDate newDate = LocalDate.parse(date, formatter);
 
 		return newDate;
 

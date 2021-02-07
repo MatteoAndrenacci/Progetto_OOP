@@ -15,7 +15,7 @@ public class ProjectApplication {
 		SpringApplication.run(ProjectApplication.class, args);
 		
 		ArrayList<JSONObject> allEvents = InitData.getJSON();
-		InitData.getDatafromJson(allEvents);
+		InitData.getDatafromJson();
 	     
 		
 	
