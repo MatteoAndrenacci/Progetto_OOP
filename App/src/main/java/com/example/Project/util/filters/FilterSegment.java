@@ -7,7 +7,7 @@ public class FilterSegment implements Filter {
 	
 
 	public boolean okFilter( Event e, Object param) {
-		if ((boolean)(e.getSegment()).equals(param))
+		if (((Object)e.getSegment()).equals(param))
 			return true;
 		return false;
 	}

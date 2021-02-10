@@ -29,8 +29,8 @@ public class Controller {
 	}
 	
 	@RequestMapping (value = "stats", method = RequestMethod.GET)
-	public HashMap<String, Object> getStats(){
-		return Stats.getStatsForSegment();
+	public HashMap<String, Integer> getStats(){
+		return Stats.getNumSegment(getEvents());
 	}
 	
 
