@@ -5,14 +5,12 @@ import java.time.LocalDate;
 import com.example.Project.model.Event;
 import com.example.Project.util.other.Converter;
 
-public class FilterDateYear implements Filter{
+public class FilterDateDay implements Filter {
 	
-	
-	public boolean okFilter ( Event e,String param) {
-		String newParam = param.concat("-01-01");
+	public boolean okFilter (Event e,String param) {
 		LocalDate newDate = Converter.dateConv(e.getDate());
-		LocalDate paramDate = Converter.dateConv(newParam);
-		if(newDate.getYear() == paramDate.getYear())
+		LocalDate paramDate = Converter.dateConv(param);
+		if(newDate.equals(paramDate))
 			return true;
 		else return false;
 	}
