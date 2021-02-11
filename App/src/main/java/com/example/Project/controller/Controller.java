@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.Project.init.InitData;
 import com.example.Project.model.Event;
 import com.example.Project.service.ApplyFilter;
-import com.example.Project.util.stats.Stats;
+import com.example.Project.util.stats.NumericStats;
 
 @RestController
 public class Controller {
@@ -25,12 +25,12 @@ public class Controller {
 	
 	@RequestMapping (value = "filteredEvents", method = RequestMethod.POST)
 	public ArrayList<Event> getFilteredEvents (@RequestBody JSONObject filter){
-		 return ApplyFilter.checkFilter(filter);
+		 return ApplyFilter.checkFilter(filter,getEvents());
 	}
 	
 	@RequestMapping (value = "stats", method = RequestMethod.GET)
-	public HashMap<String, Integer> getStats(){
-		return Stats.getNumSegment(getEvents());
+	public HashMap<String, Object> getStats(){
+		return NumericStats.getStatsForSegment();
 	}
 	
 

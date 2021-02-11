@@ -1,18 +1,18 @@
 package com.example.Project.model;
 
-import java.time.LocalDate;
+
 
 public class Event {
 
 	String name;
 	String segment;
-	LocalDate date;
+	String date;
 	String venue;
 	String city;
 	String state;
 	String country;
 	
-	public Event(String name, String segment, LocalDate date, String venue, String city, String state, String country) {
+	public Event(String name, String segment, String date, String venue, String city, String state, String country) {
 		super();
 		this.name = name;
 		this.segment = segment;
@@ -34,10 +34,10 @@ public class Event {
 	public void setSegment(String segment) {
 		this.segment = segment;
 	}
-	public LocalDate getDate() {
+	public String getDate() {
 		return date;
 	}
-	public void setDate(LocalDate date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 	public String getVenue() {
