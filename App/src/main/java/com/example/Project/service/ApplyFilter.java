@@ -21,11 +21,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class ApplyFilter {
 
-	private static ArrayList<Event> eventsList = InitData.getDatafromJson();
+	
 	private final static String str = "com.example.Project.util.filters.Filter";
 	public static ArrayList<Event> filteredEvents = new ArrayList<Event>();
 
-	public static ArrayList<Event> checkFilter(JSONObject filter) {
+	public static ArrayList<Event> checkFilter(JSONObject filter,ArrayList<Event> eventsList) {
 
 		ObjectMapper mapper = new ObjectMapper();
 		HashMap<String, Object> filterMap = mapper.convertValue(filter, HashMap.class);
@@ -48,10 +48,10 @@ public class ApplyFilter {
 			Class<?> filterClass = Class.forName(cls);
 			Constructor<?> ct = filterClass.getDeclaredConstructor();
 			Filter filter = (Filter) ct.newInstance();
-
+			
 			for (Event e : eventsList) {
 
-				if (filter.okFilter(e, ent.getValue()))
+				if (filter.okFilter(e, (String) ent.getValue()))
 					filteredEvents.add(e);
 
 			}
@@ -65,4 +65,3 @@ public class ApplyFilter {
 	}
 
 }
-

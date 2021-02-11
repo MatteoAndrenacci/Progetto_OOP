@@ -6,8 +6,8 @@ public class FilterState implements Filter {
 
 	
 
-	public boolean okFilter( Event e, Object param) {
-		if (((Object)e.getState()).equals(param))
+	public boolean okFilter( Event e, String param) {
+		if ((e.getState()).equals(param))
 			return true;
 		else
 			return false;

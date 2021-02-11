@@ -4,10 +4,6 @@ import com.example.Project.model.Event;
 
 public interface Filter {
 	
-	
-	
-
-	public boolean okFilter(Event e,Object param);
-	
+	public boolean okFilter(Event e,String param);
 
 }
