@@ -133,7 +133,7 @@ public class InitData {
 				// estraggo valore "country"
 				country = (String) ((HashMap) temp.get(0).get("country")).get("name");
 
-				Event newEvent = new Event(name, segment, Converter.dateConv(date), venue, city, state, country);
+				Event newEvent = new Event(name, segment, date, venue, city, state, country);
 				eventsList.add(newEvent);
                 
 			}
