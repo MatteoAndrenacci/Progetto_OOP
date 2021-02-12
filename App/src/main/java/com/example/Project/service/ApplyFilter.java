@@ -33,6 +33,7 @@ public class ApplyFilter {
 		for (Map.Entry<String, Object> ent : filterMap.entrySet()) {
 
 			applyFilter(eventsList, ent);
+			
 
 		}
 

@@ -13,6 +13,7 @@ import com.example.Project.init.InitData;
 import com.example.Project.model.Event;
 import com.example.Project.service.ApplyFilter;
 import com.example.Project.util.stats.NumericStats;
+import com.example.Project.util.stats.PeriodicStats;
 
 @RestController
 public class Controller {
@@ -31,6 +32,11 @@ public class Controller {
 	@RequestMapping (value = "stats", method = RequestMethod.GET)
 	public HashMap<String, Object> getStats(){
 		return NumericStats.getStatsForSegment();
+	}
+	
+	@RequestMapping (value = "stats/month", method = RequestMethod.POST)
+	public HashMap<String, Object> getStatsByMonth (@RequestBody JSONObject jsonMonth){
+		 return PeriodicStats.getMonthStats(jsonMonth);
 	}
 	
 

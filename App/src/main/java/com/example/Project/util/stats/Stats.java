@@ -11,7 +11,7 @@ public class Stats {
 	static ArrayList<Event> eventsList = InitData.getDatafromJson();
 	static String filterState = "{\r\n" + "\"State\":\"x\"\r\n" + "}";
 	static String filterSegment = "{\r\n" + "\"Segment\":\"x\"\r\n" + "}";
-	static String filterMonth = "{\r\n" + "\"DateMonth\":\"x\"\r\n" + "}";
+	
 	
 	
 	// preparazione mappa di tutti gli stati in vista delle statistiche

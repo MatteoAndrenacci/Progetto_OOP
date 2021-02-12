@@ -14,14 +14,14 @@ public class StatsOperations {
 
 	public static String filterDay = "{\r\n" + "\"DateDay\":\"x\"\r\n" + "}";
 
-	public static int MaxEvents(ArrayList<Event> events) {
+	public static int MaxEvents(ArrayList<Event> events, String stringDate) {
 
 		ArrayList<Event> filteredByDay = new ArrayList<Event>();
 		ArrayList<Integer> numEvents = new ArrayList<Integer>();
 		// filtro events per giorno
 		// per ogni giorno conto quanti eventi
 		// il numero che trovo lo metto su array e vedo qual è il max
-		LocalDate date = Converter.dateConv(events.get(0).getDate());
+		LocalDate date = Converter.dateConv(stringDate);
 		int i = 0;
 		int max = 0;
 		try {
@@ -34,8 +34,9 @@ public class StatsOperations {
 				i++;
 			}
 
-			for (int e = 0; e < numEvents.size(); e++) {
-				max = Integer.max(numEvents.get(e), numEvents.get(e++));
+			for (Integer e = 0; e < numEvents.size(); e++) {
+				if (numEvents.get(e) > max)
+					max = numEvents.get(e);
 
 			}
 
@@ -45,6 +46,77 @@ public class StatsOperations {
 		}
 
 		return max;
+
+	}
+
+	public static int MinEvents(ArrayList<Event> events, String stringDate) {
+
+		ArrayList<Event> filteredByDay = new ArrayList<Event>();
+		ArrayList<Integer> numEvents = new ArrayList<Integer>();
+		// filtro events per giorno
+		// per ogni giorno conto quanti eventi
+		// il numero che trovo lo metto su array e vedo qual è il max
+		LocalDate date = Converter.dateConv(stringDate);
+		int i = 0;
+		int min = 0;
+		try {
+			while (i <= date.lengthOfMonth() - 1) {
+
+				filteredByDay = ApplyFilter.checkFilter(
+						(JSONObject) JSONValue.parseWithException(filterDay.replace("x", date.plusDays(i).toString())),
+						events);
+				numEvents.add(filteredByDay.size());
+				i++;
+			}
+
+			for (Integer e = 0; e < numEvents.size(); e++) {
+				if (numEvents.get(e) < min)
+					min = numEvents.get(e);
+
+			}
+
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return min;
+
+	}
+
+	public static int AverageEvents(ArrayList<Event> events, String stringDate) {
+		ArrayList<Event> filteredByDay = new ArrayList<Event>();
+		ArrayList<Integer> numEvents = new ArrayList<Integer>();
+		// filtro events per giorno
+		// per ogni giorno conto quanti eventi
+		// il numero che trovo lo metto su array e vedo qual è il max
+		LocalDate date = Converter.dateConv(stringDate);
+		int i = 0;
+		int avg = 0;
+		int sum = 0;
+		try {
+			while (i <= date.lengthOfMonth() - 1) {
+
+				filteredByDay = ApplyFilter.checkFilter(
+						(JSONObject) JSONValue.parseWithException(filterDay.replace("x", date.plusDays(i).toString())),
+						events);
+				numEvents.add(filteredByDay.size());
+				i++;
+			}
+
+			for (Integer e = 0; e < numEvents.size(); e++) {
+				sum = sum + numEvents.get(e);
+
+			}
+
+			avg = sum / numEvents.size();
+
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return avg;
 
 	}
 
