@@ -4,7 +4,9 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.json.simple.JSONObject;
 
@@ -21,39 +23,40 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class ApplyFilter {
 
-	
 	private final static String str = "com.example.Project.util.filters.Filter";
-	public static ArrayList<Event> filteredEvents = new ArrayList<Event>();
 
-	public static ArrayList<Event> checkFilter(JSONObject filter,ArrayList<Event> eventsList) {
+	public static ArrayList<Event> checkFilter(JSONObject filter, ArrayList<Event> eventsList) {
 
 		ObjectMapper mapper = new ObjectMapper();
 		HashMap<String, Object> filterMap = mapper.convertValue(filter, HashMap.class);
 
+		// Iterator<Entry<String, Object>> it = filterMap.entrySet().iterator();
+		// Iterator<Entry<String, ArrayList<Event>>> it1 =
+		// filteredEvents.entrySet().iterator();
+
 		for (Map.Entry<String, Object> ent : filterMap.entrySet()) {
-
-			applyFilter(eventsList, ent);
-			
-
+			ArrayList<Event> lastFiltered = applyFilter(eventsList, ent);
+			eventsList = lastFiltered;
 		}
 
-		return filteredEvents;
+		return eventsList;
 
 	}
 
-	public static void applyFilter(ArrayList<Event> eventsList, Map.Entry<String, Object> ent) {
+	public static ArrayList<Event> applyFilter(ArrayList<Event> eventsList, Map.Entry<String, Object> ent) {
 
 		String cls = str.concat(ent.getKey());
+		ArrayList<Event> lastFiltered = new ArrayList<Event>();
 
 		try {
 			Class<?> filterClass = Class.forName(cls);
 			Constructor<?> ct = filterClass.getDeclaredConstructor();
 			Filter filter = (Filter) ct.newInstance();
-			
+
 			for (Event e : eventsList) {
 
 				if (filter.okFilter(e, (String) ent.getValue()))
-					filteredEvents.add(e);
+					lastFiltered.add(e);
 
 			}
 
@@ -62,7 +65,7 @@ public class ApplyFilter {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-
+		return lastFiltered;
 	}
 
 }
