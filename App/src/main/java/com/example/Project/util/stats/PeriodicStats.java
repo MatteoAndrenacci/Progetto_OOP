@@ -18,20 +18,28 @@ public class PeriodicStats extends Stats {
 
 		HashMap<String, Object> statesMap = getStatesMap(); // ottiene mappa di tutti gli stati con valori associati
 															// nulli
+		ArrayList<Event> filtered = new ArrayList<Event>();
+		String month = ((String) jsonMonth.get("DateMonth")).concat("-01");
 
 		HashMap<String, Integer> subMap = new HashMap<String, Integer>();
-		ArrayList<Event> filteredByState = new ArrayList<Event>();
-		ArrayList<Event> filteredByMonth = ApplyFilter.checkFilter(jsonMonth, eventsList);
+		
+		
+	
 		try {
 
 			for (Map.Entry<String, Object> ent : statesMap.entrySet()) {
+				
+				String filterStateAndMonth = "{\r\n" + "\"State\":\" x \",\r\n" + "\"DateMonth\":\" y \"\r\n" + "}";
 
-				filteredByState = ApplyFilter.checkFilter(
-						(JSONObject) JSONValue.parseWithException(filterState.replace("x", ent.getKey())),
-						filteredByMonth);
+				filtered = ApplyFilter.checkFilter(
+						(JSONObject) JSONValue
+								.parseWithException(filterStateAndMonth.replace("x", ent.getKey()).replace("y", month)),
+						eventsList);
+				
 
-				String month = ((String) jsonMonth.get("DateMonth")).concat("-01");
-				subMap.put("Massimo", StatsOperations.MaxEvents(filteredByState, month));
+				subMap.put("Massimo", StatsOperations.MaxEvents(filtered, month));
+				subMap.put("Minimo", StatsOperations.MinEvents(filtered, month));
+				subMap.put("Media", StatsOperations.AverageEvents(filtered, month));
 				ent.setValue(subMap);
 
 			}

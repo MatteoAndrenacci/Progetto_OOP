@@ -30,6 +30,7 @@ public class NumericStats extends Stats {
 			for (Event e : events)
 				numStates.putIfAbsent(e.getState(), null);
 			for (Map.Entry<String, Integer> ent : numStates.entrySet()) {
+				String filterState = "{\r\n" + "\"State\":\"x\"\r\n" + "}";
 				ent.setValue(ApplyFilter
 						.checkFilter((JSONObject) JSONValue.parseWithException(filterState.replace("x", ent.getKey())),eventsList)
 						.size());
@@ -46,6 +47,7 @@ public class NumericStats extends Stats {
 	public static HashMap<String, Integer> getNumSegment(ArrayList<Event> events) {
 
 		HashMap<String, Integer> numSegment = new HashMap<String, Integer>();
+		String filterSegment = "{\r\n" + "\"Segment\":\"x\"\r\n" + "}";
 
 		try {
 			for (Event e : events)
@@ -70,6 +72,7 @@ public class NumericStats extends Stats {
 	// ottengo mappa di numero eventi per ogni stato raggruppati per genere
 	public static HashMap<String, Object> getStatsForSegment() {
 		HashMap<String, Object> statesMap = new HashMap<String, Object>();
+		String filterState = "{\r\n" + "\"State\":\"x\"\r\n" + "}";
 		
 		try {
 			ListIterator<Event> it1 = eventsList.listIterator();

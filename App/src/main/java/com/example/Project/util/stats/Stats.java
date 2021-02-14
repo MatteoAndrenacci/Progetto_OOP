@@ -8,11 +8,11 @@ import com.example.Project.model.Event;
 
 public class Stats {
 	
-	static ArrayList<Event> eventsList = InitData.getDatafromJson();
-	static String filterState = "{\r\n" + "\"State\":\"x\"\r\n" + "}";
-	static String filterSegment = "{\r\n" + "\"Segment\":\"x\"\r\n" + "}";
-	
-	
+	public static ArrayList<Event> eventsList = InitData.getDatafromJson();
+	//public static String filterState = "{\r\n" + "\"State\":\"x\"\r\n" + "}";
+	//public static String filterSegment = "{\r\n" + "\"Segment\":\"x\"\r\n" + "}";
+	//public static String filterStateAndMonth = "{\r\n" + "\"State\":\" x \",\r\n" + "\"DateMonth\":\" y \"\r\n" + "}";
+	public static String filterMonth = "{\r\n" + "\"DateMonth\":\"x\"\r\n" + "}";
 	
 	// preparazione mappa di tutti gli stati in vista delle statistiche
 	public static HashMap<String, Object> getStatesMap() {
