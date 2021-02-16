@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.Project.exception.InvalidFormatException;
+import com.example.Project.exception.InvalidParameterException;
 import com.example.Project.init.InitData;
 import com.example.Project.model.Event;
 import com.example.Project.service.ApplyFilter;
@@ -25,7 +27,7 @@ public class Controller {
 	}
 	
 	@RequestMapping (value = "filteredEvents", method = RequestMethod.POST)
-	public ArrayList<Event> getFilteredEvents (@RequestBody JSONObject filter){
+	public ArrayList<Event> getFilteredEvents (@RequestBody JSONObject filter) throws InvalidParameterException, InvalidFormatException{
 		 return ApplyFilter.checkFilter(filter,getEvents());
 	}
 	

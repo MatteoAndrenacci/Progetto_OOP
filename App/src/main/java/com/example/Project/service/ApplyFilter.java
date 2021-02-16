@@ -10,6 +10,8 @@ import java.util.Map.Entry;
 
 import org.json.simple.JSONObject;
 
+import com.example.Project.exception.InvalidFormatException;
+import com.example.Project.exception.InvalidParameterException;
 import com.example.Project.init.InitData;
 import com.example.Project.model.Event;
 import com.example.Project.util.filters.Filter;
@@ -24,24 +26,52 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class ApplyFilter {
 
 	private final static String str = "com.example.Project.util.filters.Filter";
+	
+	/*
+	 * 
+	 * 
+	 * 
+	 */
 
-	public static ArrayList<Event> checkFilter(JSONObject filter, ArrayList<Event> eventsList) {
+	public static ArrayList<Event> checkFilter(JSONObject filter, ArrayList<Event> eventsList)
+			throws InvalidParameterException, InvalidFormatException {
+
+		
 
 		ObjectMapper mapper = new ObjectMapper();
 		HashMap<String, Object> filterMap = mapper.convertValue(filter, HashMap.class);
-
-		// Iterator<Entry<String, Object>> it = filterMap.entrySet().iterator();
-		// Iterator<Entry<String, ArrayList<Event>>> it1 =
-		// filteredEvents.entrySet().iterator();
+		
+		if (filterMap.isEmpty())
+			throw new InvalidParameterException("Il filtro non può essere vuoto");
 
 		for (Map.Entry<String, Object> ent : filterMap.entrySet()) {
+			
+			if (((ArrayList<String>) ent.getValue()).size() < 1)
+				throw new InvalidParameterException("I parametri del filtro non possono essere vuoti");
+			
+			if (!ent.getKey().equals("DateDay") && !ent.getKey().equals("DateMonth") && !ent.getKey().equals("DateYear") && !ent.getKey().equals("Segment") && !ent.getKey().equals("State"))
+				throw new InvalidFormatException("Il campo su cui effettuare il filtraggio non è ammesso. Ammessi : DateDay, DateMonth, DateYear, Segment, State");
+			
+			if (!(ent.getValue() instanceof ArrayList<?>))
+				throw new InvalidFormatException("I parametri devono essere degli array");
+			
+			
+			
+			
 			ArrayList<Event> lastFiltered = applyFilter(eventsList, ent);
 			eventsList = lastFiltered;
+			
 		}
 
 		return eventsList;
 
 	}
+	
+	/*
+	 * 
+	 * 
+	 * 
+	 */
 
 	public static ArrayList<Event> applyFilter(ArrayList<Event> eventsList, Map.Entry<String, Object> ent) {
 
@@ -55,8 +85,11 @@ public class ApplyFilter {
 
 			for (Event e : eventsList) {
 
-				if (filter.okFilter(e, (String) ent.getValue()))
-					lastFiltered.add(e);
+				for (String s : (ArrayList<String>) ent.getValue()) {
+
+					if (filter.okFilter(e, s))
+						lastFiltered.add(e);
+				}
 
 			}
 

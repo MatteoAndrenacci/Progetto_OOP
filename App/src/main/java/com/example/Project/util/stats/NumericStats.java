@@ -11,14 +11,26 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
 
+import com.example.Project.exception.InvalidFormatException;
+import com.example.Project.exception.InvalidParameterException;
 import com.example.Project.init.InitData;
 import com.example.Project.model.Event;
 import com.example.Project.service.ApplyFilter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class NumericStats extends Stats {
 
+/*
+ * 
+ * 
+ * 
+ */
+public class NumericStats extends Stats {
 	
+
+	/*
+	 * 
+	 * 
+	 */
 
 
 	// ottengo mappa numero di eventi per ogni stato
@@ -38,9 +50,20 @@ public class NumericStats extends Stats {
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		} catch (InvalidParameterException | InvalidFormatException e) {
+			
+			e.getMessage();
+
+		} 
 		return numStates;
 	}
+	
+	
+	/*
+	 * 
+	 * 
+	 * 
+	 */
 
 	// ottengo mappa numero di eventi per ogni genere
 
@@ -62,12 +85,20 @@ public class NumericStats extends Stats {
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		} catch (InvalidParameterException | InvalidFormatException e) {
+			
+			e.getMessage();
+
+		} 
 		return numSegment;
 	}
-
 	
 	
+	/*
+	 * 
+	 * 
+	 * 
+	 */
 	
 	// ottengo mappa di numero eventi per ogni stato raggruppati per genere
 	public static HashMap<String, Object> getStatsForSegment() {
@@ -85,10 +116,14 @@ public class NumericStats extends Stats {
 
 			}
 
-		} catch (ParseException e1) {
+		} catch (ParseException e) {
 			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+			e.printStackTrace();
+		} catch (InvalidParameterException | InvalidFormatException e) {
+			
+			e.getMessage();
+
+		} 
 
 		return statesMap;
 	}
