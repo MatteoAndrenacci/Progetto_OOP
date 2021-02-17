@@ -1,5 +1,12 @@
 package com.example.Project.exception;
 
+
+/**
+ * Eccezione lanciata se il formato del filtro non è corretto
+ *
+ * @author matteoandrenacci
+ * @author eleonorabrasili
+ */
 public class InvalidFormatException extends Exception {
 	
 	public  InvalidFormatException () {
