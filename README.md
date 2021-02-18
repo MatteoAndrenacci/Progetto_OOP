@@ -258,7 +258,31 @@ O anche ...
 
 
 ### Diagramma delle sequenze
+
 **GET /events**
+
+![image](App/uml/GETevents.jfif)
+
+**POST /filteredEvents**
+
+![image](App/uml/POSTfilteredEvents.jfif)
+
+**GET /stats/state**
+
+![image](App/uml/GetstatsState.jfif)
+
+**GET /stats/seg**
+
+![image](App/uml/GETstatsSeg.jfif)
+
+**GET /stats/per**
+
+![image](App/uml/POSTstatsPer.jfif)
+
+
+## Autori
+- Matteo Andrenacci : https://github.com/MatteoAndrenacci
+- Eleonora Brasili : https://github.com/EleonoraBrasili
 
 
 
