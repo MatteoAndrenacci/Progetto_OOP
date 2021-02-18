@@ -217,3 +217,51 @@ O anche ...
     "State":["Ontario","Quebec"]
 }
 ```
+
+## Diagrammi UML
+### Diagramma dei casi d'uso
+![image](App/uml/UseCases.jfif)
+
+### Diagrammi delle classi
+
+**com.example.Project.controller**
+
+![image](App/uml/Controller.jpg)
+
+**com.example.Project.exception**
+
+![image](App/uml/Exception.jpg)
+
+**com.example.Project.init**
+
+![image](App/uml/Init.jpg)
+
+**com.example.Project.model**
+
+![image](App/uml/Model.jpg)
+
+**com.example.Project.service**
+
+![image](App/uml/Service.jpg)
+
+**com.example.Project.util.filters**
+
+![image](App/uml/Filters.jpg)
+
+**com.example.Project.util.other**
+
+![image](App/uml/Other.jpg)
+
+**com.example.Project.util.stats**
+
+![image](App/uml/Stats.jpg)
+
+
+### Diagramma delle sequenze
+**GET /events**
+
+
+
+
+
+
