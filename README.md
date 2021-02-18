@@ -22,3 +22,175 @@ Il client ha la possibilità di inviare diversi tipi di richieste:
 - `GET /stats/state` Ottenere delle statistiche sul numero di eventi in ogni stato
 - `GET /stats/seg` Ottenere delle statistiche sul numero di eventi in ogni stato, raggruppati per genere
 - `POST /stats/per` Ottenere delle statistiche riguardo al numero massimo, minimo e medio di eventi in un certo periodo.
+#### Esempi
+- GET /events
+Esempio di risposta: 
+```
+[
+    {
+        "name": "Wardruna",
+        "segment": "Music",
+        "date": "2021-10-09",
+        "venue": "Chan Centre for the Performing Arts",
+        "city": "Vancouver",
+        "state": "British Columbia",
+        "country": "Canada"
+    },
+    ...
+]
+```
+- POST /filteredEvents
+Esempio Body della richiesta:
+```
+    {
+        "State":["Ontario"],
+        "Segment":["Music"]
+    }
+
+```
+Risposta: 
+```
+[
+    {
+        "name": "The Doobie Brothers - 50th Anniversary Tour",
+        "segment": "Music",
+        "date": "2021-08-26",
+        "venue": "Budweiser Gardens",
+        "city": "London",
+        "state": "Ontario",
+        "country": "Canada"
+   },
+   ...
+]
+   
+```
+- GET /stats/state
+Esempio di risposta:
+```
+{
+    "New Brunswick": 11,
+    "Manitoba": 43,
+    "Prince Edward Island": 1,
+    "Alberta": 113,
+    "Nova Scotia": 3,
+    "Quebec": 462,
+    "British Columbia": 97,
+    "Saskatchewan": 14,
+    "Ontario": 254,
+    "Newfoundland and Labrador": 2
+}
+```
+- GET /stats/seg
+- Esempio di risposta:
+```
+{
+    "New Brunswick": {
+        "Music": 3,
+        "Sports": 8
+    },
+    "Manitoba": {
+        "Music": 30,
+        "Arts & Theatre": 13
+    },
+    "Prince Edward Island": {
+        "Music": 1
+    },
+    "Alberta": {
+        "Miscellaneous": 1,
+        "Film": 2,
+        "Music": 66,
+        "Arts & Theatre": 24,
+        "Sports": 20
+    },
+    "Nova Scotia": {
+        "Music": 3
+    },
+    "Quebec": {
+        "Film": 22,
+        "Music": 225,
+        "Arts & Theatre": 178,
+        "Sports": 37
+    },
+    "British Columbia": {
+        "Music": 57,
+        "Arts & Theatre": 15,
+        "Sports": 25
+    },
+    "Saskatchewan": {
+        "Music": 13,
+        "Sports": 1
+    },
+    "Ontario": {
+        "Miscellaneous": 3,
+        "Music": 139,
+        "Arts & Theatre": 97,
+        "Sports": 15
+    },
+    "Newfoundland and Labrador": {
+        "Music": 2
+    }
+}
+```
+- POST /stats/per
+Esempio body della richiesta: 
+```
+{
+    "stats":"DateMonth"
+}
+```
+Risposta: 
+```
+{
+    "New Brunswick": {
+        "Media mensile": 0,
+        "Massimo mensile": 6,
+        "Minimo mensile": 0
+    },
+    "Manitoba": {
+        "Media mensile": 0,
+        "Massimo mensile": 6,
+        "Minimo mensile": 0
+    },
+    "Prince Edward Island": {
+        "Media mensile": 1,
+        "Massimo mensile": 6,
+        "Minimo mensile": 0
+    },
+    "Alberta": {
+        "Media mensile": 1,
+        "Massimo mensile": 6,
+        "Minimo mensile": 0
+    },
+    "Nova Scotia": {
+        "Media mensile": 1,
+        "Massimo mensile": 6,
+        "Minimo mensile": 0
+    },
+    "Quebec": {
+        "Media mensile": 1,
+        "Massimo mensile": 6,
+        "Minimo mensile": 0
+    },
+    "British Columbia": {
+        "Media mensile": 1,
+        "Massimo mensile": 6,
+        "Minimo mensile": 0
+    },
+    "Saskatchewan": {
+        "Media mensile": 2,
+        "Massimo mensile": 6,
+        "Minimo mensile": 0
+    },
+    "Ontario": {
+        "Media mensile": 23,
+        "Massimo mensile": 51,
+        "Minimo mensile": 0
+    },
+    "Newfoundland and Labrador": {
+        "Media mensile": 23,
+        "Massimo mensile": 51,
+        "Minimo mensile": 0
+    }
+}
+```
+
