@@ -23,7 +23,7 @@ Il client ha la possibilità di inviare diversi tipi di richieste:
 - `GET /stats/seg` Ottenere delle statistiche sul numero di eventi in ogni stato, raggruppati per genere
 - `POST /stats/per` Ottenere delle statistiche riguardo al numero massimo, minimo e medio di eventi in un certo periodo.
 #### Esempi
-- GET /events
+**GET /events**
 Esempio di risposta: 
 ```
 [
@@ -39,7 +39,7 @@ Esempio di risposta:
     ...
 ]
 ```
-- POST /filteredEvents
+**POST /filteredEvents**
 Esempio Body della richiesta:
 ```
     {
@@ -64,7 +64,7 @@ Risposta:
 ]
    
 ```
-- GET /stats/state
+**GET /stats/state**
 Esempio di risposta:
 ```
 {
@@ -80,8 +80,8 @@ Esempio di risposta:
     "Newfoundland and Labrador": 2
 }
 ```
-- GET /stats/seg
-- Esempio di risposta:
+**GET /stats/seg**
+Esempio di risposta:
 ```
 {
     "New Brunswick": {
@@ -131,7 +131,7 @@ Esempio di risposta:
     }
 }
 ```
-- POST /stats/per
+**POST /stats/per**
 Esempio body della richiesta: 
 ```
 {
@@ -193,4 +193,27 @@ Risposta:
     }
 }
 ```
+## Filtri
+|     CAMPO      |FUNZIONE                                              |ESEMPIO                                           |
+|----------------|------------------------------------------------------|--------------------------------------------------|
+|State           |Ottengo eventi che si svolgono nello stato specificato|`{"State":["Ontario"]}`                           |
+|Segment         |Ottengo eventi del genere specificato                 |`{"Segment":["Music"]}`                           |
+|DateDay         |Ottengo eventi che si svolgono nel giorno specificato |`{"DateDay":["2021-06-25"]}`                      |
+|DateMonth       |Ottengo eventi che si svolgono nel mese specificato   |`{"DateMonth":["2021-03"]}`                       |
+|DateYear        |Ottengo eventi che si svolgono nell'anno specificato  |`{"DateYear":["2021"]}`                           |
 
+E' inoltre possibile applicare più filtri contemporaneamente. Ad esempio...
+```
+{
+    "Segment":["Music"],
+    "State":["Ontario"],
+    "DateMonth":["2021-03"]
+}
+```
+O anche ... 
+```
+{
+    "Segment":["Music","Sports"],
+    "State":["Ontario","Quebec"]
+}
+```
