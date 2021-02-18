@@ -17,6 +17,11 @@ import com.example.Project.init.InitData;
 import com.example.Project.model.Event;
 import com.example.Project.service.ApplyFilter;
 
+/**
+ * Classe di test per lancio eccezioni di tipo InvalidParameterException
+ * @author matteoandrenacci
+ * @author eleonorabrasili
+ */
 
 public class ParameterTests {
 	
@@ -31,6 +36,9 @@ public class ParameterTests {
 	void tearDown() throws Exception {
 	}
 	
+	/**
+	 * Quando il filtro è vuoto
+	 */
 	@Test
 	void test() {
 		String param = "{" + "}";
@@ -45,7 +53,9 @@ public class ParameterTests {
 		}
 	}
 
-	
+	/**
+	 * Quando il parametro del filtro è vuoto
+	 */
 	
 	@Test
 	void test1() {

@@ -15,7 +15,11 @@ import com.example.Project.exception.InvalidFormatException;
 import com.example.Project.init.InitData;
 import com.example.Project.model.Event;
 import com.example.Project.service.ApplyFilter;
-
+/**
+ * Classe di test per lancio eccezioni di tipo InvalidFormatException
+ * @author matteoandrenacci
+ * @author eleonorabrasili
+ */
 public class FormatTests {
 	
 	private ArrayList<Event> eventsList = null;
@@ -29,6 +33,10 @@ public class FormatTests {
 	void tearDown() throws Exception {
 	}
 	
+	
+	/**
+	 * Quando il campo del filtro non è ammesso 
+	 */
 	@Test
 	void test() {
 		String param = "{\r\n" + "\"Test\":[\"x\"]\r\n" + "}";
@@ -43,6 +51,9 @@ public class FormatTests {
 		}
 	}
 	
+	/**
+	 * Quando il parametro non è inserito sottoforma di array
+	 */
 	@Test
 	void test1() {
 		String param = "{\r\n" + "\"DateDay\": \"x\" \r\n" + "}";
