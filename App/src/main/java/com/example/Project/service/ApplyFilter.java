@@ -13,7 +13,7 @@ import com.example.Project.model.Event;
 import com.example.Project.util.filters.Filter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/*
+/**
  * Classe con metodi per applicazione dei filtri
  * @author matteoandrenacci
  * @author eleonorabrasili
@@ -23,12 +23,16 @@ public class ApplyFilter {
 
 	private final static String str = "com.example.Project.util.filters.Filter";
 	
-	/*
-	 * 
-	 * 
-	 * 
-	 */
 
+    /**
+     * Controlla il tipo di filtro richiesto
+     * 
+     * @param filter filtro da applicare, in formato json
+     * @param eventsList lista di tutti gli eventi da filtrare 
+     * @return ArrayList<Event> array di eventi filtrati
+     * @throws InvalidParameterException
+     * @throws InvalidFormatException
+     */
 	public static ArrayList<Event> checkFilter(JSONObject filter, ArrayList<Event> eventsList)
 			throws InvalidParameterException, InvalidFormatException {
 
@@ -63,12 +67,13 @@ public class ApplyFilter {
 
 	}
 	
-	/*
-	 * 
-	 * 
-	 * 
+	/**
+	 * Applica il filtro 
+	 * @param eventsList
+	 * @param ent coppia chiave-valore contenente rispettivamente campo e parametro 
+	 * su cui effettuare filtraggio
+	 * @return ArrayList<Event> array di eventi filtrati
 	 */
-
 	public static ArrayList<Event> applyFilter(ArrayList<Event> eventsList, Map.Entry<String, Object> ent) {
 
 		String cls = str.concat(ent.getKey());

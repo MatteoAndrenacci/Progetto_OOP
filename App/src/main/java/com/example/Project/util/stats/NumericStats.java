@@ -13,19 +13,20 @@ import com.example.Project.exception.InvalidParameterException;
 import com.example.Project.model.Event;
 import com.example.Project.service.ApplyFilter;
 
-/*
- * 
- * 
- * 
+/**
+ * Classe che estende Stats. Ottiene mappe contenti i numeri risultanti
+ * da statistiche per ogni stato.
+ * @author matteoandrenacci
+ * @author eleonorabrasili
  */
 public class NumericStats extends Stats {
 
-	/*
+	/**
+	 * Calcola il numero di eventi per ogni stato
 	 * 
-	 * 
+	 * @param events array di eventi 
+	 * @return  numStates mappa di tutti gli stati con associati i rispettivi numeri 
 	 */
-
-	// ottengo mappa numero di eventi per ogni stato
 	public static HashMap<String, Integer> getNumStates(ArrayList<Event> events) {
 
 		HashMap<String, Integer> numStates = new HashMap<String, Integer>();
@@ -34,7 +35,7 @@ public class NumericStats extends Stats {
 			for (Event e : events)
 				numStates.putIfAbsent(e.getState(), null);
 			for (Map.Entry<String, Integer> ent : numStates.entrySet()) {
-				String filterState = "{\r\n" + "\"State\":\"x\"\r\n" + "}";
+				String filterState = "{\r\n" + "\"State\":[\"x\"]\r\n" + "}";
 				ent.setValue(ApplyFilter
 						.checkFilter((JSONObject) JSONValue.parseWithException(filterState.replace("x", ent.getKey())),
 								eventsList)
@@ -51,13 +52,11 @@ public class NumericStats extends Stats {
 		return numStates;
 	}
 
-	/*
-	 * 
-	 * 
-	 * 
-	 */
-
-	// ottengo mappa numero di eventi per ogni genere
+    /**
+     * Calcola numero eventi per ogni genere
+     * @param events array di eventi
+     * @return numSegment mappa di tutti i generi con associati i rispettivi numeri
+     */
 
 	public static HashMap<String, Integer> getNumSegment(ArrayList<Event> events) {
 
@@ -83,14 +82,14 @@ public class NumericStats extends Stats {
 		}
 		return numSegment;
 	}
-
-	/*
+	
+	/**
+	 * Calcola il numero di eventi per ogni stato, raggruppati per genere
 	 * 
-	 * 
-	 * 
+	 * @return statesMap mappa di tutti gli stati con associati i
+	 * rispettivi numeri, raggruppati per genere.
 	 */
 
-	// ottengo mappa di numero eventi per ogni stato raggruppati per genere
 	public static HashMap<String, Object> getStatsForSegment() {
 		HashMap<String, Object> statesMap = new HashMap<String, Object>();
 		String filterState = "{\r\n" + "\"State\":[\"x\"]\r\n" + "}";

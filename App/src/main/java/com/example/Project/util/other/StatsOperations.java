@@ -2,17 +2,20 @@ package com.example.Project.util.other;
 
 import java.util.ArrayList;
 
-/*
+/**
+ * Classe contenente le operazioni utili all statistiche: 
+ * Massimo, Minimo e Media.
  * 
- * 
- * 
+ * @author matteoandrenacci
+ * @author eleonorabrasili
+ *
  */
 public class StatsOperations {
 
-	/*
-	 * 
-	 * 
-	 * 
+	/**
+	 * Individua il Massimo elemento dell'array passato come parametro
+	 * @param numEvents array di interi 
+	 * @return Integer massimo trovato
 	 */
 
 	public static Integer MaxEvents(ArrayList<Integer> numEvents) {
@@ -26,10 +29,10 @@ public class StatsOperations {
 		return max;
 	}
 
-	/*
-	 * 
-	 * 
-	 * 
+	/**
+	 * Individua il Minimo elemento dell'array passato come parametro
+	 * @param numEvents array di interi 
+	 * @return Integer minimo trovato
 	 */
 
 	public static Integer MinEvents(ArrayList<Integer> numEvents) {
@@ -43,12 +46,11 @@ public class StatsOperations {
 		return min;
 	}
 	
-	/*
-	 * 
-	 * 
-	 * 
+	/**
+	 * Individua la Media tra tutti gli elementi dell'array passato come parametro
+	 * @param numEvents array di interi 
+	 * @return Integer media trovata
 	 */
-
 	public static Integer AverageEvents(ArrayList<Integer> numEvents) {
 
 		int sum = 0;

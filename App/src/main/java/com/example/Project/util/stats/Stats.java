@@ -6,15 +6,21 @@ import java.util.HashMap;
 import com.example.Project.init.InitData;
 import com.example.Project.model.Event;
 
+/**
+ * SuperClasse estesa da tutti i tipi di statistiche 
+ * @author matteoandrenacci
+ * @author eleonorabrasili
+ */
 public class Stats {
 	
-	public static ArrayList<Event> eventsList = InitData.getDatafromJson();
-	//public static String filterState = "{\r\n" + "\"State\":\"x\"\r\n" + "}";
-	//public static String filterSegment = "{\r\n" + "\"Segment\":\"x\"\r\n" + "}";
-	//public static String filterStateAndMonth = "{\r\n" + "\"State\":\" x \",\r\n" + "\"DateMonth\":\" y \"\r\n" + "}";
-	public static String filterMonth = "{\r\n" + "\"DateMonth\":\"x\"\r\n" + "}";
+	static ArrayList<Event> eventsList = InitData.getDatafromJson();
 	
-	// preparazione mappa di tutti gli stati in vista delle statistiche
+	/**
+	 * Preparazione mappa di tutti gli stati in vista delle statistiche.
+	 * Ad ogni stato associa il valore 'null'
+	 * @return statesMap mappa che ad ogni stato associa valore 'null'
+	 */
+	
 	public static HashMap<String, Object> getStatesMap() {
 		HashMap<String, Object> statesMap = new HashMap<String, Object>();
 		for (Event e : eventsList) {

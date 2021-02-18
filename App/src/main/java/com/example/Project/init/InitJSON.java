@@ -12,6 +12,13 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
 
+/**
+ * Classe per parsing del json
+ * 
+ * @author matteoandrenacci
+ * @author eleonorabrasili
+ */
+
 public class InitJSON {
 
 	/**

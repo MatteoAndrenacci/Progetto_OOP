@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -53,6 +54,17 @@ public class Controller {
 		 return ApplyFilter.checkFilter(filter,getEvents());
 	}
 	
+	/**
+	 * Rotta per ottenere delle statistiche sul numero di 
+	 * eventi in ogni stato
+	 * 
+	 * @return HashMap<String, Integer> mappa di tutti gli stati
+	 *  con associati loro il numero di eventi 
+	 */
+	@RequestMapping (value = "stats/state", method = RequestMethod.GET)
+	public HashMap<String, Integer> getStatsState(){
+		return NumericStats.getNumStates(InitData.getDatafromJson());
+	}
 	
 	/**
 	 * Rotta per ottenere delle statistiche sul numero di 
@@ -61,8 +73,8 @@ public class Controller {
 	 * @return HashMap<String, Object> mappa di tutti gli stati
 	 *  con associati loro il numero di eventi per ogni genere.
 	 */
-	@RequestMapping (value = "stats", method = RequestMethod.GET)
-	public HashMap<String, Object> getStats(){
+	@RequestMapping (value = "stats/seg", method = RequestMethod.GET)
+	public HashMap<String, Object> getStatsSegment(){
 		return NumericStats.getStatsForSegment();
 	}
 	
@@ -72,11 +84,14 @@ public class Controller {
 	 * 
 	 * @return HashMap<String, Object> mappa di tutti gli stati
 	 *  con associati loro il numero massimo, minimo e medio di eventi mensili.
+	 * @throws ParseException 
+	 * @throws InvalidParameterException 
+	 * @throws InvalidFormatException 
 	 */
 	
-	@RequestMapping (value = "stats/month", method = RequestMethod.GET)
-	public HashMap<String, Object> getStatsByMonth (){
-		 return PeriodicStats.getMonthStats();
+	@RequestMapping (value = "stats/per", method = RequestMethod.POST)
+	public HashMap<String, Object> getPeriodicStats (@RequestBody JSONObject obj) throws InvalidFormatException, InvalidParameterException, ParseException{
+		 return PeriodicStats.getPerStats(obj);
 	}
 	
 

@@ -7,14 +7,14 @@ import org.json.simple.JSONObject;
 
 import com.example.Project.model.Event;
 
-/*
+/**
  * Classe contentente metodi per inizializzazione dataset
  * @author matteoandrenacci
  * @author eleonorabrasili
  */
 public class InitData {
 
-	/*
+	/**
 	 * Estrapolazione dagli oggetti json delle info utili . Le info estratte sono
 	 * passate come parametri per creazione oggetti Event
 	 * 

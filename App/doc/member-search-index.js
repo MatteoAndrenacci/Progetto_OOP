@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"com.example.Project.util.stats","c":"PeriodicStats","l":"getPerStats(JSONObject)","u":"getPerStats(org.json.simple.JSONObject)"},{"p":"com.example.Project.util.stats","c":"PeriodicStats","l":"PeriodicStats()","u":"%3Cinit%3E()"}];updateSearchResults();

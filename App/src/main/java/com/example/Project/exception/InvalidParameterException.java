@@ -1,5 +1,14 @@
 package com.example.Project.exception;
 
+
+/**
+ * Eccezione lanciata se i parametri del filtro non sono 
+ * validi
+ * 
+ * @author matteoandrenacci
+ * @author eleonorabrasili
+ *
+ */
 public class InvalidParameterException extends Exception {
 	
 	public  InvalidParameterException () {
