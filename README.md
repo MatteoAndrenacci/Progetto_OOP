@@ -222,6 +222,9 @@ O anche ...
 ### Diagramma dei casi d'uso
 ![image](App/uml/UseCases.jfif)
 
+### Packages
+![image](App/uml/Packages.jfif)
+
 ### Diagrammi delle classi
 
 **com.example.Project.controller**
