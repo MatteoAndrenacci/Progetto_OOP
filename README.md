@@ -17,8 +17,8 @@ Ogni evento è descritto da diverse proprietà:
 
 ## Richieste
 Il client ha la possibilità di inviare diversi tipi di richieste:
-- Ottenere la lista di tutti gli eventi in programmazione
-- Ottenere una lista di eventi filtrati in base a parametri scelti
-- Ottenere delle statistiche sul numero di eventi in ogni stato
-- Ottenere delle statistiche sul numero di eventi in ogni stato, raggruppati per genere
-- ottenere delle statistiche riguardo al numero massimo, minimo e medio di eventi mensili.
+- `GET /events` Ottenere la lista di tutti gli eventi in programmazione
+- `POST /filteredEvents` Ottenere una lista di eventi filtrati in base a parametri scelti
+- `GET /stats/state` Ottenere delle statistiche sul numero di eventi in ogni stato
+- `GET /stats/seg` Ottenere delle statistiche sul numero di eventi in ogni stato, raggruppati per genere
+- `POST /stats/per` Ottenere delle statistiche riguardo al numero massimo, minimo e medio di eventi in un certo periodo.
